@@ -205,6 +205,11 @@ The only prerequisite for FileImport is .NET. That's it. Ok, and Git. Or somethi
 5. Add a reference to the dll in your project
 6. Rule the world!
 
+To run the test project use:
+```sh
+dotnet test
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -258,21 +263,21 @@ _For more examples, please refer to the [FileimportLibraryTest](https://github.c
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] CSV support
-  - [x] Header row
-  - [x] Header used for field names
-  - [x] Data is unquoted
-- [x] Additional CSV support
-  - [x] Enable quoted data
+- [x] ~~CSV support~~
+  - [x] ~~Header row~~
+  - [x] ~~Header used for field names~~
+  - [x] ~~Data is unquoted~~
+- [x] ~~Additional CSV support~~
+  - [x] ~~Enable quoted data~~~
 - [ ] Ability to "peek" at a file and see what columns are present
-  - [x] CSV files
-  - [x] Tab
+  - [x] ~~CSV files~~
+  - [x] ~~Tab~~
   - [ ] Pipe (in progress)
   - [ ] Semicolon (in progress)
   - [ ] User-defined (in progress)
   - [ ] Fixed-width
 - [ ] Additional delimiter support (in progresss)
-  - [x] Tab
+  - [x] ~~Tab~~
   - [ ] Pipe (in progress)
   - [ ] Semiclon (in progress)
   - [ ] User-defined (in progrss)

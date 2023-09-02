@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TechGnome.FileImport.FileImportLibraryTest;
 
@@ -208,7 +204,7 @@ public class FileImportTest
     [Test]
     public void TestImport_Custom()
     {
-        DataTable result = FileImporter.Import("../../../data/SampleData-Custom.dat", new ImportConfig(ImportConfig.USERDEFINED) { Name = "Tilde", Delimiters = new String[] { "~" } });
+        DataTable result = FileImporter.Import("../../../data/SampleData-Custom.dat", new ImportConfig(ImportConfig.USERDEFINED) { Name = "Tilde", Delimiters = new List<string> { new("~") } });
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));
@@ -296,7 +292,7 @@ public class FileImportTest
     [Test]
     public void TestPeek_UserDefined()
     {
-        DataTable result = FileImporter.Peek("../../../data/SampleData-Custom.dat", new ImportConfig(ImportConfig.USERDEFINED) { Name = "Tilde", Delimiters = new String[] { "~" } });
+        DataTable result = FileImporter.Peek("../../../data/SampleData-Custom.dat", new ImportConfig(ImportConfig.USERDEFINED) { Name = "Tilde", Delimiters = new List<string> { new("~") } });
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));

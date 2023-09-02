@@ -27,15 +27,15 @@ public class FileImporter
 
     private static TextFieldParser CreateParser(string source, ImportConfig config) 
     {
-        var reader = new TextFieldParser(source);
-        reader.TextFieldType = config.FieldType;
-        reader.Delimiters = config.Delimiters;
-        reader.HasFieldsEnclosedInQuotes = config.QuotedData;
-        // reqader.CommentTokens = config.CommentTokens;
-        // reqader.FieldWidths = config.FieldWidths;
-        // reqader.TrimWhiteSpace = config.TrimWhiteSpace;
-
-        return reader;
+        return new TextFieldParser(source)
+        {
+            TextFieldType = config.FieldType,
+            Delimiters = config.Delimiters!= null ? config.Delimiters.ToArray() : Array.Empty<string>(),
+            HasFieldsEnclosedInQuotes = config.QuotedData
+            // CommentTokens = config.CommentTokens != null ? config.CommentTokens.ToArray() : Array.Empty<string>(),
+            // FieldWidths = config.FieldWidths,
+            // TrimWhiteSpace = config.TrimWhiteSpace
+        };
     }
 
     public static DataTable Peek(string source)

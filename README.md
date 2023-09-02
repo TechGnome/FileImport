@@ -263,7 +263,7 @@ _For more examples, please refer to the [FileimportLibraryTest](https://github.c
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] ~~CSV support~~
+- [x] CSV support
   - [x] ~~Header row~~
   - [x] ~~Header used for field names~~
   - [x] ~~Data is unquoted~~
@@ -272,23 +272,23 @@ _For more examples, please refer to the [FileimportLibraryTest](https://github.c
 - [ ] Ability to "peek" at a file and see what columns are present
   - [x] ~~CSV files~~
   - [x] ~~Tab~~
-  - [ ] Pipe (in progress)
-  - [ ] Semicolon (in progress)
-  - [ ] User-defined (in progress)
+  - [x] ~~Pipe~~
+  - [x] ~~Semicolon~~
+  - [x] ~~User-defined~~
   - [ ] Fixed-width
-- [ ] Additional delimiter support (in progresss)
+- [x] Additional delimiter support (in progresss)
   - [x] ~~Tab~~
-  - [ ] Pipe (in progress)
-  - [ ] Semiclon (in progress)
-  - [ ] User-defined (in progrss)
+  - [x] ~~Pipe~~
+  - [x] ~~Semicolon~~
+  - [x] ~~User-defined~~
 - [ ] Add support for fixed-width 
   - [ ] user-defined column widths
-- [ ] Ability to store configurations in a file
-  - [ ] JSON format
-  - [ ] XML format
-  - [ ] YAML format
+- [x] Ability to store configurations in a file
+  - [x] ~~JSON format~~
+  - [x] ~~XML format~~
+  - [x] ~~YAML format~~
 - [ ] Ability to reaad and use configuration files
-  - [ ] JSON format
+  - [x] ~~JSON format~~
   - [ ] XML format
   - [ ] YAML format
 - [ ] Support comments in the imported file

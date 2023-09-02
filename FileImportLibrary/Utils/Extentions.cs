@@ -1,4 +1,4 @@
-namespace TechGnome.FileImport.FileImportLibrary.ExtensionMethods;
+namespace TechGnome.FileImport.FileImportLibrary.Extensions;
 
 public static class StringExtentions
 {
@@ -9,5 +9,11 @@ public static class StringExtentions
             return string.Empty;
         }
         return char.ToUpper(source[0]) + source.Substring(1);
+    }
+
+    public static string Last(this string source, int length)
+    {
+        if (source.Length <= length) return source;
+        return source.Substring(source.Length - length);
     }
 }

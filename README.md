@@ -268,7 +268,7 @@ _For more examples, please refer to the [FileimportLibraryTest](https://github.c
   - [x] ~~Header used for field names~~
   - [x] ~~Data is unquoted~~
 - [x] ~~Additional CSV support~~
-  - [x] ~~Enable quoted data~~~
+  - [x] ~~Enable quoted data~~
 - [ ] Ability to "peek" at a file and see what columns are present
   - [x] ~~CSV files~~
   - [x] ~~Tab~~
@@ -291,6 +291,7 @@ _For more examples, please refer to the [FileimportLibraryTest](https://github.c
   - [x] ~~JSON format~~
   - [ ] XML format
   - [ ] YAML format
+- [x] ~~Ability to skip rows at the beginning of a file~~
 - [ ] Support comments in the imported file
 - [ ] Support multiple format layouts in a single file
 - [ ] Add ability to perform field validation

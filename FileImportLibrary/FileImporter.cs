@@ -58,9 +58,12 @@ public class FileImporter
 
     public static DataTable Import(string source, ImportConfig config)
     {
-        var importDataTable = new DataTable();
         var reader = CreateParser(source, config);
-        importDataTable = CreateDataTable(reader, config);
+        DataTable importDataTable = CreateDataTable(reader, config);
+        for (int rows = config.SkipRows ?? default; rows > 0 && !reader.EndOfData; rows--)
+        {
+            reader.ReadLine();
+        }
         while(!reader.EndOfData)
         {
             string[] currentRow = reader.ReadFields();

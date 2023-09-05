@@ -172,6 +172,7 @@ Development was done with VSCode on a Linux system.
 * [![C# .Ney 7.0][CSharpNet70]][CSharpNet70-url]
 * [![Developed using VSCode][VSCode]][VSCode-url]
 * [![Packages from NUget][Nuget]][NUget-url]
+* [![NUget package YamlDotNet][YamlDotNet]][YamlDotNet-url]
 * [![Tested using NUnit Testing][NUnit]][NUnit-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -381,5 +382,8 @@ Project Link: [https://github.com/techgnome/FileImport](https://github.com/techg
 [VSCode-url]: https://code.visualstudio.com/
 [NUget]: https://img.shields.io/badge/-NUget-004880?logo=nuget
 [NUget-url]: https://www.nuget.org/
-[NUnit]: https://img.shields.io/badge/Tested_by-NUnit-green
+[NUnit]: https://img.shields.io/badge/Tested_by-NUnit-green?logo=nuget
 [NUnit-url]: https://docs.nunit.org/index.html
+
+[YamlDotNet]: https://img.shields.io/badge/-YamlDotNet-004880?logo=yaml
+[YamlDotNet-url]: https://github.com/aaubry/YamlDotNet

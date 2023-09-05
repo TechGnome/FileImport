@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config Name="Default" HasHeader="true" QuotedData="false" TrimWhiteSpace="false" FieldType="Delimited" UseHeaderAsFields="true" xmlns="https://github.com/TechGnome/FileImport">
+  <Delimiters>
+    <Delimiter>,</Delimiter>
+  </Delimiters>
+</Config>

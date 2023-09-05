@@ -4,6 +4,9 @@ namespace TechGnome.FileImport.FileImportLibraryTest;
 
 public class FileImportTest
 {
+
+    private static string TESTFILE = "./Resources/data/SampleData";
+
     [SetUp]
     public void Setup()
     {
@@ -12,7 +15,7 @@ public class FileImportTest
     [Test]
     public void TestImport_Default()
     {
-        DataTable result = FileImporter.Import("../../../data/SampleData.csv");
+        DataTable result = FileImporter.Import(TESTFILE + ".csv");
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));
@@ -60,7 +63,7 @@ public class FileImportTest
     [Test]
     public void TestImport_CSV()
     {
-        DataTable result = FileImporter.Import("../../../data/SampleData_Quotes.csv", ImportConfig.CSV);
+        DataTable result = FileImporter.Import(TESTFILE + "_Quotes.csv", ImportConfig.CSV);
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));
@@ -108,7 +111,7 @@ public class FileImportTest
     [Test]
     public void TestImport_CSV_SkipRows()
     {
-        DataTable result = FileImporter.Import("../../../data/SampleData_Quotes.csv", new ImportConfig( ImportConfig.CSV ){SkipRows = 10});
+        DataTable result = FileImporter.Import(TESTFILE + "_Quotes.csv", new ImportConfig( ImportConfig.CSV ){SkipRows = 10});
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));
@@ -143,7 +146,7 @@ public class FileImportTest
     [Test]
     public void TestImport_TAB()
     {
-        DataTable result = FileImporter.Import("../../../data/SampleData.tab", ImportConfig.TAB);
+        DataTable result = FileImporter.Import(TESTFILE + ".tab", ImportConfig.TAB);
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));
@@ -191,7 +194,7 @@ public class FileImportTest
     [Test]
     public void TestImport_TAB_Quotes()
     {
-        DataTable result = FileImporter.Import("../../../data/SampleData_Quotes.tab", new ImportConfig(ImportConfig.TAB) { QuotedData = true });
+        DataTable result = FileImporter.Import(TESTFILE + "_Quotes.tab", new ImportConfig(ImportConfig.TAB) { QuotedData = true });
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));
@@ -239,7 +242,7 @@ public class FileImportTest
     [Test]
     public void TestImport_Custom()
     {
-        DataTable result = FileImporter.Import("../../../data/SampleData-Custom.dat", new ImportConfig(ImportConfig.USERDEFINED) { Name = "Tilde", Delimiters = new List<string> { new("~") } });
+        DataTable result = FileImporter.Import(TESTFILE + "_Custom.dat", new ImportConfig(ImportConfig.USERDEFINED) { Name = "Tilde", Delimiters = new List<string> { new("~") } });
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));
@@ -287,7 +290,7 @@ public class FileImportTest
     [Test]
     public void TestPeek_Default()
     {
-        DataTable result = FileImporter.Peek("../../../data/SampleData.csv");
+        DataTable result = FileImporter.Peek(TESTFILE + ".csv");
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));
@@ -307,7 +310,7 @@ public class FileImportTest
     [Test]
     public void TestPeek_CSV()
     {
-        DataTable result = FileImporter.Peek("../../../data/SampleData.csv", ImportConfig.CSV);
+        DataTable result = FileImporter.Peek(TESTFILE + ".csv", ImportConfig.CSV);
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));
@@ -327,7 +330,7 @@ public class FileImportTest
     [Test]
     public void TestPeek_UserDefined()
     {
-        DataTable result = FileImporter.Peek("../../../data/SampleData-Custom.dat", new ImportConfig(ImportConfig.USERDEFINED) { Name = "Tilde", Delimiters = new List<string> { new("~") } });
+        DataTable result = FileImporter.Peek(TESTFILE + "_Custom.dat", new ImportConfig(ImportConfig.USERDEFINED) { Name = "Tilde", Delimiters = new List<string> { new("~") } });
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));

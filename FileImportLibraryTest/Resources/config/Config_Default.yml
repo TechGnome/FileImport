@@ -1,0 +1,9 @@
+name: Default
+delimiters:
+- ','
+hasHeader: true
+quotedData: false
+trimWhiteSpace: false
+skipRows: 0
+fieldType: Delimited
+useHeaderAsFields: true

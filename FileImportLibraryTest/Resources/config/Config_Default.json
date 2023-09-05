@@ -1,0 +1,15 @@
+{
+  "name": "Default",
+  "delimiters": [
+    ","
+  ],
+  "comments": null,
+  "hasHeader": true,
+  "quotedData": false,
+  "fieldWidths": null,
+  "trimWhiteSpace": false,
+  "skipRows": 0,
+  "fieldType": 0,
+  "useHeaderAsFields": true,
+  "fields": null
+}

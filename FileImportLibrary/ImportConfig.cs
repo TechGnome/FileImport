@@ -11,35 +11,38 @@ namespace TechGnome.FileImport.FileImportLibrary;
 [XmlRoot("Config", Namespace="https://github.com/TechGnome/FileImport", IsNullable = false)]
 public class ImportConfig
 {
+
+    private FieldType _fieldType;
+
     [XmlAttribute]
-    public string Name { get; set; } = "Default";
+    public string Name { get; set; }
     
     [XmlArray("Delimiters")]
     [XmlArrayItem("Delimiter")]
     [JsonPropertyName("delimiters")]
-    public List<string>? Delimiters { get; set; } = new List<string>{ new(",") };
+    public List<string>? Delimiters { get; set; }
 
     [XmlArray("Comments")]
     [XmlArrayItem("Token")]
     [JsonPropertyName("comments")]
-    public List<string>? CommentTokens { get; set; } = null;
+    public List<string>? CommentTokens { get; set; }
 
     [XmlAttribute]
-    public bool HasHeader { get; set; } = true;
+    public bool HasHeader { get; set; }
 
     [XmlAttribute]
-    public bool QuotedData { get; set; } = false;
+    public bool QuotedData { get; set; }
 
     [XmlArray("FieldWidths")]
     [XmlArrayItem("Width")]
     [JsonPropertyName("fieldWidths")]
-    public int[]? FieldWidths { get; set; } = null;
+    public int[]? FieldWidths { get; set; }
 
     [XmlAttribute]
-    public bool TrimWhiteSpace { get; set; } = false;
+    public bool TrimWhiteSpace { get; set; }
 
     [XmlIgnore]
-    public int? SkipRows { get; set; } = 0;
+    public int? SkipRows { get; set; }
 
     [XmlAttribute("SkipRows")]
     [JsonIgnore]
@@ -64,16 +67,31 @@ public class ImportConfig
         }
     }
 
-    [XmlAttribute]
-    public FieldType FieldType { get; set; } = FieldType.Delimited;
 
     [XmlAttribute]
-    public bool UseHeaderAsFields { get; set; } = true;
+    public FieldType FieldType
+    {
+        get
+        {
+            return _fieldType;
+        }
+        set
+        {
+            _fieldType = value;
+            if (value == FieldType.FixedWidth) 
+            {
+                Delimiters = null;
+            }
+        }
+    }
+
+    [XmlAttribute]
+    public bool UseHeaderAsFields { get; set; }
 
     [XmlArray("Fields")]
     [XmlArrayItem("Name")]
     [JsonPropertyName("fields")]
-    public List<string>? Fields  { get; set; } = null;
+    public List<string>? Fields  { get; set; }
 
     public bool ShouldSerializeSkipRowsValue()
     {
@@ -87,7 +105,8 @@ public class ImportConfig
     public static readonly ImportConfig TAB = new() { Name = "TAB", Delimiters = new List<string> { new("\t") } };
     public static readonly ImportConfig PIPE = new() { Name = "PIPE", Delimiters = new List<string> { new("|") } };
     public static readonly ImportConfig SEMICOLON = new() { Name = "SEMICOLON", Delimiters = new List<string> { new(";") } };
-    public static readonly ImportConfig USERDEFINED = new () { Name = "USER", Delimiters = new List<string> { new(";") } };
+    public static readonly ImportConfig USERDEFINED = new() { Name = "USER", Delimiters = new List<string> { new(";") } };
+    public static readonly ImportConfig FIXED_WIDTH_CONFIG = new() { Name = "FIXED WIDTH", FieldType = FieldType.FixedWidth, TrimWhiteSpace = true };
 
     public ImportConfig()
     {
@@ -177,8 +196,11 @@ public class ImportConfig
 
     private static ImportConfig? LoadFromJson(string fileName)
     {
-            string jsonString = File.ReadAllText(fileName);
-            return JsonSerializer.Deserialize<ImportConfig?>(jsonString)!;
+        string jsonString = File.ReadAllText(fileName);
+        var options = new JsonSerializerOptions 
+            { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, 
+            WriteIndented = true };
+        return JsonSerializer.Deserialize<ImportConfig?>(jsonString, options)!;
     }
 
     private static void SaveAsXml(string fileName, ImportConfig config)
@@ -195,7 +217,8 @@ public class ImportConfig
         XmlSerializer serializer = new(typeof(ImportConfig));
         FileStream fs = new(fileName, FileMode.OpenOrCreate);
         TextReader reader = new StreamReader(fs);
-        return (ImportConfig?)serializer.Deserialize(reader);
+        ImportConfig? config = (ImportConfig?)serializer.Deserialize(reader);
+        return config;
     }
 
     private static void SaveAsYaml(string fileName, ImportConfig config)

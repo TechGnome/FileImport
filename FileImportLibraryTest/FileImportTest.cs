@@ -290,60 +290,57 @@ public class FileImportTest
     [Test]
     public void TestPeek_Default()
     {
-        DataTable result = FileImporter.Peek(TESTFILE + ".csv");
+        List<DataColumn> result = FileImporter.Peek(TESTFILE + ".csv");
 
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.Columns.Count, Is.EqualTo(10));
-        Assert.That(result.Rows.Count, Is.EqualTo(0));
-        Assert.That(result.Columns[0].ColumnName, Is.EqualTo("Field 1"));
-        Assert.That(result.Columns[1].ColumnName, Is.EqualTo("Field 2"));
-        Assert.That(result.Columns[2].ColumnName, Is.EqualTo("Field 3"));
-        Assert.That(result.Columns[3].ColumnName, Is.EqualTo("Field 4"));
-        Assert.That(result.Columns[4].ColumnName, Is.EqualTo("Field 5"));
-        Assert.That(result.Columns[5].ColumnName, Is.EqualTo("Field 6"));
-        Assert.That(result.Columns[6].ColumnName, Is.EqualTo("Field 7"));
-        Assert.That(result.Columns[7].ColumnName, Is.EqualTo("Field 8"));
-        Assert.That(result.Columns[8].ColumnName, Is.EqualTo("Field 9"));
-        Assert.That(result.Columns[9].ColumnName, Is.EqualTo("Field 10"));
+        Assert.That(result.Count, Is.EqualTo(10));
+        Assert.That(result[0].ColumnName, Is.EqualTo("Field 1"));
+        Assert.That(result[1].ColumnName, Is.EqualTo("Field 2"));
+        Assert.That(result[2].ColumnName, Is.EqualTo("Field 3"));
+        Assert.That(result[3].ColumnName, Is.EqualTo("Field 4"));
+        Assert.That(result[4].ColumnName, Is.EqualTo("Field 5"));
+        Assert.That(result[5].ColumnName, Is.EqualTo("Field 6"));
+        Assert.That(result[6].ColumnName, Is.EqualTo("Field 7"));
+        Assert.That(result[7].ColumnName, Is.EqualTo("Field 8"));
+        Assert.That(result[8].ColumnName, Is.EqualTo("Field 9"));
+        Assert.That(result[9].ColumnName, Is.EqualTo("Field 10"));
     }
 
     [Test]
     public void TestPeek_CSV()
     {
-        DataTable result = FileImporter.Peek(TESTFILE + ".csv", ImportConfig.CSV_EXTENDED);
+        List<DataColumn> result = FileImporter.Peek(TESTFILE + ".csv", ImportConfig.CSV_EXTENDED);
 
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.Columns.Count, Is.EqualTo(10));
-        Assert.That(result.Rows.Count, Is.EqualTo(0));
-        Assert.That(result.Columns[0].ColumnName, Is.EqualTo("Field 1"));
-        Assert.That(result.Columns[1].ColumnName, Is.EqualTo("Field 2"));
-        Assert.That(result.Columns[2].ColumnName, Is.EqualTo("Field 3"));
-        Assert.That(result.Columns[3].ColumnName, Is.EqualTo("Field 4"));
-        Assert.That(result.Columns[4].ColumnName, Is.EqualTo("Field 5"));
-        Assert.That(result.Columns[5].ColumnName, Is.EqualTo("Field 6"));
-        Assert.That(result.Columns[6].ColumnName, Is.EqualTo("Field 7"));
-        Assert.That(result.Columns[7].ColumnName, Is.EqualTo("Field 8"));
-        Assert.That(result.Columns[8].ColumnName, Is.EqualTo("Field 9"));
-        Assert.That(result.Columns[9].ColumnName, Is.EqualTo("Field 10"));
+        Assert.That(result.Count, Is.EqualTo(10));
+        Assert.That(result[0].ColumnName, Is.EqualTo("Field 1"));
+        Assert.That(result[1].ColumnName, Is.EqualTo("Field 2"));
+        Assert.That(result[2].ColumnName, Is.EqualTo("Field 3"));
+        Assert.That(result[3].ColumnName, Is.EqualTo("Field 4"));
+        Assert.That(result[4].ColumnName, Is.EqualTo("Field 5"));
+        Assert.That(result[5].ColumnName, Is.EqualTo("Field 6"));
+        Assert.That(result[6].ColumnName, Is.EqualTo("Field 7"));
+        Assert.That(result[7].ColumnName, Is.EqualTo("Field 8"));
+        Assert.That(result[8].ColumnName, Is.EqualTo("Field 9"));
+        Assert.That(result[9].ColumnName, Is.EqualTo("Field 10"));
     }
 
     [Test]
     public void TestPeek_UserDefined()
     {
-        DataTable result = FileImporter.Peek(TESTFILE + "_Custom.dat", new ImportConfig(ImportConfig.USERDEFINED) { Name = "Tilde", Delimiters = new List<string> { new("~") } });
+        List<DataColumn> result = FileImporter.Peek(TESTFILE + "_Custom.dat", new ImportConfig(ImportConfig.USERDEFINED) { Name = "Tilde", Delimiters = new List<string> { new("~") } });
 
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.Columns.Count, Is.EqualTo(10));
-        Assert.That(result.Rows.Count, Is.EqualTo(0));
-        Assert.That(result.Columns[0].ColumnName, Is.EqualTo("Field 1"));
-        Assert.That(result.Columns[1].ColumnName, Is.EqualTo("Field 2"));
-        Assert.That(result.Columns[2].ColumnName, Is.EqualTo("Field 3"));
-        Assert.That(result.Columns[3].ColumnName, Is.EqualTo("Field 4"));
-        Assert.That(result.Columns[4].ColumnName, Is.EqualTo("Field 5"));
-        Assert.That(result.Columns[5].ColumnName, Is.EqualTo("Field 6"));
-        Assert.That(result.Columns[6].ColumnName, Is.EqualTo("Field 7"));
-        Assert.That(result.Columns[7].ColumnName, Is.EqualTo("Field 8"));
-        Assert.That(result.Columns[8].ColumnName, Is.EqualTo("Field 9"));
-        Assert.That(result.Columns[9].ColumnName, Is.EqualTo("Field 10"));
+        Assert.That(result.Count, Is.EqualTo(10));
+        Assert.That(result[0].ColumnName, Is.EqualTo("Field 1"));
+        Assert.That(result[1].ColumnName, Is.EqualTo("Field 2"));
+        Assert.That(result[2].ColumnName, Is.EqualTo("Field 3"));
+        Assert.That(result[3].ColumnName, Is.EqualTo("Field 4"));
+        Assert.That(result[4].ColumnName, Is.EqualTo("Field 5"));
+        Assert.That(result[5].ColumnName, Is.EqualTo("Field 6"));
+        Assert.That(result[6].ColumnName, Is.EqualTo("Field 7"));
+        Assert.That(result[7].ColumnName, Is.EqualTo("Field 8"));
+        Assert.That(result[8].ColumnName, Is.EqualTo("Field 9"));
+        Assert.That(result[9].ColumnName, Is.EqualTo("Field 10"));
     }
 }

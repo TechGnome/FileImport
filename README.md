@@ -9,12 +9,13 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-[![.NET][gh-buid-shield]][gh-build-url]
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+<br />
+[![.NET][gh-buid-badge]][gh-build-url]
 
 
 
@@ -85,9 +86,9 @@ _Import(string fileName)_ - Imports a file using the default settings. Returns a
 
 _Import(string fileName,ImportConfig config)_ - Imports a file using the specified import configurations. Returns a DataTable with the imported data in it.
 
-_Peek(string fileName)_ - Imports a file using the default settings
+_Peek(string fileName)_ - Inspects the file using the default config settings and returns a `List<DataColumn>`. Does not actually import or inspect the data, but simply returns a List<> with the found colums based on the configuration.
 
-_Peek(string fileName,ImportConfig config)_ - Imports a file using the specified import configurations.
+_Peek(string fileName,ImportConfig config)_ - Imports the file using the specified import config settings and returns a `List<DataColumn>`. Does not actually import or inspect the data, but simply returns a List<> with the found colums based on the configuration.
 
 ### Import Configurations
 
@@ -256,23 +257,23 @@ _For more examples, please refer to the [FileimportLibraryTest](https://github.c
   - [x] ~~Semicolon~~
   - [x] ~~User-defined~~
   - [ ] Fixed-width
-- [x] Additional delimiter support (in progresss)
+- [x] ~~Additional delimiter support (in progresss)~~
   - [x] ~~Tab~~
   - [x] ~~Pipe~~
   - [x] ~~Semicolon~~
   - [x] ~~User-defined~~
-- [ ] Add support for fixed-width 
-  - [ ] user-defined column widths
-- [x] Ability to store configurations in a file
+- [x] ~~Add support for fixed-width ~~
+  - [x] ~~user-defined column widths~~
+- [x] ~~Ability to store configurations in a file~~
   - [x] ~~JSON format~~
   - [x] ~~XML format~~
   - [x] ~~YAML format~~
-- [ ] Ability to reaad and use configuration files
+- [x] ~~Ability to reaad and use configuration files~~
   - [x] ~~JSON format~~
   - [x] ~~XML format~~
   - [x] ~~YAML format~~
 - [x] ~~Ability to skip rows at the beginning of a file~~
-- [ ] Support comments in the imported file
+- [x] ~~Support comments in the imported file~~
 - [ ] Support multiple format layouts in a single file
 - [ ] Add ability to perform field validation
 - [ ] Allow field data types
@@ -353,7 +354,7 @@ Project Link: [https://github.com/techgnome/FileImport](https://github.com/techg
 [license-shield]: https://img.shields.io/github/license/techgnome/FileImport.svg?style=for-the-badge
 [license-url]: https://github.com/techgnome/FileImport/blob/master/LICENSE.txt
 
-[gh-buid-shield]: https://github.com/TechGnome/FileImport/actions/workflows/dotnet.yml/badge.svg?branch=main
+[gh-buid-badge]: https://github.com/TechGnome/FileImport/actions/workflows/dotnet.yml/badge.svg?branch=main
 [gh-build-url]: https://github.com/TechGnome/FileImport/actions/workflows/dotnet.yml
 
 [CSharpNet60]: https://img.shields.io/badge/C%23-.Net_6.0-blue?logo=csharp

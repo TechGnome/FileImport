@@ -4,23 +4,43 @@ namespace TechGnome.FileImport.FileImportLibrary;
 public class FileImporter
 {
 
-    private static DataTable CreateDataTable(TextFieldParser reader, ImportConfig config)
+    private static List<DataColumn> BuildDataColumns(string[] fields)
     {
         List<DataColumn> dataColumns = new List<DataColumn>();
+
+        foreach(string field in fields)
+        {
+            Type? colType = Type.GetType("System.String", false, true);
+            if (colType == null )
+            {
+                throw new InvalidDataException("Unable to crete the correct type secified.");
+            }
+            dataColumns.Add(new(field, colType));
+        }
+        return dataColumns;
+    }
+
+    private static List<DataColumn> CreateDataColumns(TextFieldParser reader, ImportConfig config)
+    {
+        List<DataColumn> dataColumns;
         if(config.UseHeaderAsFields || config.Fields == null || config.Fields.Count == 0)
         {
             string[]? fields = reader.ReadFields();
-            foreach(string field in fields)
-            {
-                dataColumns.Add(new(field, System.Type.GetType("System.String")));
+            if (fields == null) {
+                    throw new InvalidDataException("Unable to determine the field columns of the file.");
             }
+            dataColumns = BuildDataColumns(fields);
         } else {
-            foreach(string field in config.Fields)
-            {
-                dataColumns.Add(new(field, System.Type.GetType("System.String")));
-            }
+            dataColumns = BuildDataColumns(config.Fields.ToArray());
         }
+
+        return dataColumns;
+    }
+
+    private static DataTable CreateDataTable(TextFieldParser reader, ImportConfig config)
+    {
         var dataTable = new DataTable();
+        var dataColumns = CreateDataColumns(reader, config);
         dataTable.Columns.AddRange(dataColumns.ToArray());
         return dataTable;
     }
@@ -38,17 +58,15 @@ public class FileImporter
         };
     }
 
-    public static DataTable Peek(string source)
+    public static List<DataColumn> Peek(string source)
     {
         return Peek(source, ImportConfig.DEFAULT);
     }
 
-    public static DataTable Peek(string source, ImportConfig config)
+    public static List<DataColumn> Peek(string source, ImportConfig config)
     {
-        var importDataTable = new DataTable();
         var reader = CreateParser(source, config); 
-        importDataTable = CreateDataTable(reader, config);
-        return importDataTable;
+        return CreateDataColumns(reader, config);
     }
 
     public static DataTable Import(string source)
@@ -59,6 +77,10 @@ public class FileImporter
     public static DataTable Import(string source, ImportConfig config)
     {
         var reader = CreateParser(source, config);
+        if(reader == null)
+        {
+            throw new Exception("Unable to parse the file.");
+        }
         DataTable importDataTable = CreateDataTable(reader, config);
         for (int rows = config.SkipRows ?? default; rows > 0 && !reader.EndOfData; rows--)
         {
@@ -66,7 +88,11 @@ public class FileImporter
         }
         while(!reader.EndOfData)
         {
-            string[] currentRow = reader.ReadFields();
+            string[]? currentRow = reader.ReadFields();
+            if (currentRow == null) 
+            {
+                throw new InvalidDataException("Unable to properly parse the data row");
+            }
             importDataTable.Rows.Add(currentRow);
         }
         return importDataTable;

@@ -63,7 +63,7 @@ public class FileImportTest
     [Test]
     public void TestImport_CSV()
     {
-        DataTable result = FileImporter.Import(TESTFILE + "_Quotes.csv", ImportConfig.CSV);
+        DataTable result = FileImporter.Import(TESTFILE + "_Quotes.csv", ImportConfig.CSV_EXTENDED);
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));
@@ -111,7 +111,7 @@ public class FileImportTest
     [Test]
     public void TestImport_CSV_SkipRows()
     {
-        DataTable result = FileImporter.Import(TESTFILE + "_Quotes.csv", new ImportConfig( ImportConfig.CSV ){SkipRows = 10});
+        DataTable result = FileImporter.Import(TESTFILE + "_Quotes.csv", new ImportConfig( ImportConfig.CSV_EXTENDED ){SkipRows = 10});
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));
@@ -310,7 +310,7 @@ public class FileImportTest
     [Test]
     public void TestPeek_CSV()
     {
-        DataTable result = FileImporter.Peek(TESTFILE + ".csv", ImportConfig.CSV);
+        DataTable result = FileImporter.Peek(TESTFILE + ".csv", ImportConfig.CSV_EXTENDED);
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result.Columns.Count, Is.EqualTo(10));

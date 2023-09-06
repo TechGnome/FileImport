@@ -15,34 +15,34 @@ public class ImportConfig
     private FieldType _fieldType;
 
     [XmlAttribute]
-    public string Name { get; set; }
+    public string Name { get; set; } = "Default";
     
     [XmlArray("Delimiters")]
     [XmlArrayItem("Delimiter")]
     [JsonPropertyName("delimiters")]
-    public List<string>? Delimiters { get; set; }
+    public List<string>? Delimiters { get; set; } = new List<string>{ new(",") };
 
     [XmlArray("Comments")]
     [XmlArrayItem("Token")]
     [JsonPropertyName("comments")]
-    public List<string>? CommentTokens { get; set; }
+    public List<string>? CommentTokens { get; set; } = null;
 
     [XmlAttribute]
-    public bool HasHeader { get; set; }
+    public bool HasHeader { get; set; } = true;
 
     [XmlAttribute]
-    public bool QuotedData { get; set; }
+    public bool QuotedData { get; set; } = false;
 
     [XmlArray("FieldWidths")]
     [XmlArrayItem("Width")]
     [JsonPropertyName("fieldWidths")]
-    public int[]? FieldWidths { get; set; }
+    public int[]? FieldWidths { get; set; } = null;
 
     [XmlAttribute]
-    public bool TrimWhiteSpace { get; set; }
+    public bool TrimWhiteSpace { get; set; } = false;
 
     [XmlIgnore]
-    public int? SkipRows { get; set; }
+    public int? SkipRows { get; set; } = 0;
 
     [XmlAttribute("SkipRows")]
     [JsonIgnore]
@@ -86,12 +86,12 @@ public class ImportConfig
     }
 
     [XmlAttribute]
-    public bool UseHeaderAsFields { get; set; }
+    public bool UseHeaderAsFields { get; set; } = true;
 
     [XmlArray("Fields")]
     [XmlArrayItem("Name")]
     [JsonPropertyName("fields")]
-    public List<string>? Fields  { get; set; }
+    public List<string>? Fields { get; set; } = null;
 
     public bool ShouldSerializeSkipRowsValue()
     {
@@ -101,7 +101,8 @@ public class ImportConfig
     private static Dictionary<string, ImportConfig> instance = new Dictionary<string, ImportConfig>();
 
     public static readonly ImportConfig DEFAULT = new();
-    public static readonly ImportConfig CSV = new() { Name = "CSV", QuotedData = true };
+    public static readonly ImportConfig CSV = new() { Name = "CSV"} ;
+    public static readonly ImportConfig CSV_EXTENDED = new() { Name = "CSV Extended", QuotedData = true };
     public static readonly ImportConfig TAB = new() { Name = "TAB", Delimiters = new List<string> { new("\t") } };
     public static readonly ImportConfig PIPE = new() { Name = "PIPE", Delimiters = new List<string> { new("|") } };
     public static readonly ImportConfig SEMICOLON = new() { Name = "SEMICOLON", Delimiters = new List<string> { new(";") } };

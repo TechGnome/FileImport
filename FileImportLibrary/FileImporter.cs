@@ -35,7 +35,7 @@ public class FileImporter
             FieldWidths = config.FieldWidths != null ? config.FieldWidths : Array.Empty<int>(),
             // CommentTokens = config.CommentTokens != null ? config.CommentTokens.ToArray() : Array.Empty<string>(),
             // FieldWidths = config.FieldWidths,
-            // TrimWhiteSpace = config.TrimWhiteSpace
+            TrimWhiteSpace = config.TrimWhiteSpace
         };
     }
 

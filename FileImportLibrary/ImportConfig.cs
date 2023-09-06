@@ -103,11 +103,11 @@ public class ImportConfig
     public static readonly ImportConfig DEFAULT = new();
     public static readonly ImportConfig CSV = new() { Name = "CSV"} ;
     public static readonly ImportConfig CSV_EXTENDED = new() { Name = "CSV Extended", QuotedData = true };
-    public static readonly ImportConfig TAB = new() { Name = "TAB", Delimiters = new List<string> { new("\t") } };
-    public static readonly ImportConfig PIPE = new() { Name = "PIPE", Delimiters = new List<string> { new("|") } };
-    public static readonly ImportConfig SEMICOLON = new() { Name = "SEMICOLON", Delimiters = new List<string> { new(";") } };
-    public static readonly ImportConfig USERDEFINED = new() { Name = "USER", Delimiters = new List<string> { new(";") } };
-    public static readonly ImportConfig FIXED_WIDTH_CONFIG = new() { Name = "FIXED WIDTH", FieldType = FieldType.FixedWidth, TrimWhiteSpace = true };
+    public static readonly ImportConfig TAB = new() { Name = "Tab", Delimiters = new List<string> { new("\t") } };
+    public static readonly ImportConfig PIPE = new() { Name = "Pipe", Delimiters = new List<string> { new("|") } };
+    public static readonly ImportConfig SEMICOLON = new() { Name = "Semicolon", Delimiters = new List<string> { new(";") } };
+    public static readonly ImportConfig USERDEFINED = new() { Name = "User", Delimiters = new List<string> { new(";") } };
+    public static readonly ImportConfig FIXED_WIDTH = new() { Name = "Fixed Width", FieldType = FieldType.FixedWidth, TrimWhiteSpace = true };
 
     public ImportConfig()
     {

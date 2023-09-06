@@ -13,7 +13,7 @@ public class FixedWidthTest
     [SetUp]
     public void Setup()
     {
-        fixedWidthConfig = new ImportConfig(ImportConfig.FIXED_WIDTH_CONFIG) { FieldWidths = FIELD_WIDTHS };
+        fixedWidthConfig = new ImportConfig(ImportConfig.FIXED_WIDTH) { FieldWidths = FIELD_WIDTHS };
     }
 
     [Test]
@@ -86,21 +86,21 @@ public class FixedWidthTest
     [Test]
     public void TestConfigSave_FixedWidth_Json()
     {
-        var config = new ImportConfig(ImportConfig.FIXED_WIDTH_CONFIG) { FieldWidths = FIELD_WIDTHS };
+        var config = new ImportConfig(ImportConfig.FIXED_WIDTH) { FieldWidths = FIELD_WIDTHS };
         ImportConfig.Save("./fixedWidthConfig.json", config);
     }
 
     [Test]
     public void TestConfigSave_FixedWidth_Xml()
     {
-        var config = new ImportConfig(ImportConfig.FIXED_WIDTH_CONFIG) { FieldWidths = FIELD_WIDTHS };
+        var config = new ImportConfig(ImportConfig.FIXED_WIDTH) { FieldWidths = FIELD_WIDTHS };
         ImportConfig.Save("./fixedWidthConfig.xml", config);
     }
 
     [Test]
     public void TestConfigSave_FixedWidth_Yaml()
     {
-        var config = new ImportConfig(ImportConfig.FIXED_WIDTH_CONFIG) { FieldWidths = FIELD_WIDTHS };
+        var config = new ImportConfig(ImportConfig.FIXED_WIDTH) { FieldWidths = FIELD_WIDTHS };
         ImportConfig.Save("./fixedWidthConfig.yaml", config);
     }
 

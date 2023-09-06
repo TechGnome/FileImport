@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Config Name="FIXED WIDTH" HasHeader="true" QuotedData="false" TrimWhiteSpace="true" FieldType="FixedWidth" UseHeaderAsFields="true" xmlns="https://github.com/TechGnome/FileImport">
+<Config Name="Fixed Width" HasHeader="true" QuotedData="false" TrimWhiteSpace="true" FieldType="FixedWidth" UseHeaderAsFields="true" xmlns="https://github.com/TechGnome/FileImport">
   <FieldWidths>
     <Width>10</Width>
     <Width>7</Width>

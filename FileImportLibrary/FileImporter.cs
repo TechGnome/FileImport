@@ -31,10 +31,11 @@ public class FileImporter
         {
             TextFieldType = config.FieldType,
             Delimiters = config.Delimiters!= null ? config.Delimiters.ToArray() : Array.Empty<string>(),
-            HasFieldsEnclosedInQuotes = config.QuotedData
+            HasFieldsEnclosedInQuotes = config.QuotedData,
+            FieldWidths = config.FieldWidths != null ? config.FieldWidths : Array.Empty<int>(),
             // CommentTokens = config.CommentTokens != null ? config.CommentTokens.ToArray() : Array.Empty<string>(),
             // FieldWidths = config.FieldWidths,
-            // TrimWhiteSpace = config.TrimWhiteSpace
+            TrimWhiteSpace = config.TrimWhiteSpace
         };
     }
 

@@ -94,54 +94,31 @@ The FileImport librsry has six pre-defined ImportConfig settings. Each one can b
 Each configuration has the following properties:
 * Name - string - Name of the configuration 
 * Delimiter - string[] - Array of delimiters to use
-* CommentToken - string[] - Array of delimiters markong comment lines in the file
 * HasHeader - bool - If true, treat the first row in the file as a header
 * QuotedData - bool - Flag indicating if the file has quoted data for field vlaues
-* FieldWidth - int[] - Array of integers indicating the width of each field when used with fixed-width format files
-* TrimWhiteSpacce - bool - Flag indicating if white space should be trimmed from field values.
 * SkipRows - int - Determines if rows should be skipped when reading the file. This value does not include the header row.
 * FieldType - FieldType - Determines if the file being imported is Delimited, or FkedWidth.
 * UseHeaderAsFields - bool - when true, uses the values found in the header row for the field names
-* Fields - string[] - Array of strings to use as the field names
+* CommentToken - string[] - Array of delimiters markong comment lines in the file **
+* FieldWidth - int[] - Array of integers indicating the width of each field when used with fixed-width format files
+* TrimWhiteSpacce - bool - Flag indicating if white space should be trimmed from field values.
+* Fields - string[] - Array of strings to use as the field names **
 
-NOTE: Not all of the configuration items listed have been completely implemented. The properties are available, but may not be in use yet.
+** NOTE: Not all of the configuration items listed have been completely implemented. The properties are available, but may not be in use yet.
 
-#### DEFAULT
-This is the base default config setting. 
-* Name - Default
-* Delimiter - `,`
-* CommentToken - none
-* HasHeader - true
-* QuotedData - false
-* FieldWidths - null
-* TtrimWhiteSpac - false
-* SkipRows - 0
-* FieldType - Delimited
-* UseHeaderAsFields - true
-* Fields - null
+The following chart shows all of the current preset configurations and their settings.
 
-**NOTE**: Only differences from the Default are showing in the additional configurations below.
+Confg | Name | Delimiter | HasHeader | QuotedData | SkipRows | FieldType | UseHeaderAsFields| CommentToken | FieldWidths | TrimWhitespace  | Fields
+:--- | :--- | :---: | :---: | :---: | :---: | :--- | :---: | :---: | :--- | :---: | :--- 
+Default | Default | `,` | true | false | 0 | Delimited | true | null | null | false | null
+CSV | CSV | `,` | true | false | 0 | Delimited | true | null | null | false | null
+CSV_EXTENDED | CSV Extended | `,` | true | true | 0 | Delimited | true | null | null | false | null
+TAB | Tab | `\t` | true | false | 0 | Delimited | true | null | null | false | null
+PIPE | Pipe | `\|` | true | false | 0 | Delimited | true | null | null | false | null
+SEMICOLON | Semicolon | `;` | true | false | 0 | Delimited | true | null | null | false | null
+USERDEFINED | User | `List<string>` | true | false | 0 | Delimited | true | null | null | false | null
+FIXED_WIDTH | Fixed Width | `{empty}` | true | false | 0 | FixedWidth | true | null | `int?[]` | true | null
 
-#### CSV
-* Name - CSV
-* QuotedData - true
-
-#### TAB
-* Name - TAB
-* Delimiters - tab ("\t")
-
-#### PIPE
-* Name - PIPE
-* Delimiters - `|`
-
-
-#### SEMICOLON
-* Name - SEMICOLON
-* Delimiters - `;`
-
-#### USERDEFINED
-* Name - USER
-* Delimiters - empty string ("")
 
 #### Custom
 To create a custom configuration, override the needed proprties in the constructor.
@@ -172,6 +149,7 @@ Development was done with VSCode on a Linux system.
 * [![C# .Ney 7.0][CSharpNet70]][CSharpNet70-url]
 * [![Developed using VSCode][VSCode]][VSCode-url]
 * [![Packages from NUget][Nuget]][NUget-url]
+* [![NUget package YamlDotNet][YamlDotNet]][YamlDotNet-url]
 * [![Tested using NUnit Testing][NUnit]][NUnit-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -381,5 +359,8 @@ Project Link: [https://github.com/techgnome/FileImport](https://github.com/techg
 [VSCode-url]: https://code.visualstudio.com/
 [NUget]: https://img.shields.io/badge/-NUget-004880?logo=nuget
 [NUget-url]: https://www.nuget.org/
-[NUnit]: https://img.shields.io/badge/Tested_by-NUnit-green
+[NUnit]: https://img.shields.io/badge/Tested_by-NUnit-green?logo=nuget
 [NUnit-url]: https://docs.nunit.org/index.html
+
+[YamlDotNet]: https://img.shields.io/badge/-YamlDotNet-004880?logo=yaml
+[YamlDotNet-url]: https://github.com/aaubry/YamlDotNet

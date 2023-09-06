@@ -1,0 +1,23 @@
+{
+  "name": "Fixed Width",
+  "comments": null,
+  "hasHeader": true,
+  "quotedData": false,
+  "fieldWidths": [
+    10,
+    7,
+    10,
+    10,
+    7,
+    10,
+    9,
+    15,
+    10,
+    -1
+  ],
+  "trimWhiteSpace": true,
+  "skipRows": 0,
+  "fieldType": 1,
+  "useHeaderAsFields": true,
+  "fields": null
+}

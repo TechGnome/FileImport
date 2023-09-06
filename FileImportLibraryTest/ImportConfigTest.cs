@@ -2,6 +2,9 @@
 namespace TechGnome.FileImport.FileImportLibraryTest;
 public class ImportConfigTest
 {
+
+    private static string CONFIGFILENAME = "./Resources/config/Config_Default";
+
     [Test]
     public void TestConfigSave_Json()
     {
@@ -30,14 +33,10 @@ public class ImportConfigTest
         ImportConfig.Save("./testFile.yml", config);
     }
 
-    //        InvalidConfigurationException ex = Assert.Throws<InvalidConfigurationException>(
-        //     () => test.StartPosition = 50);
-        // Assert.That(ex.Message, Is.EqualTo("StartPosition cannot exceed the EndPosition"));
-
     [Test]
     public void TestConfigLoad_Json()
     {
-        var config = ImportConfig.Load("./testFile.json");
+        var config = ImportConfig.Load( CONFIGFILENAME + ".json");
         var baseline = new ImportConfig();
         Assert.That(config, Is.Not.Null);
         Assert.That(config.Name, Is.EqualTo(baseline.Name));
@@ -52,7 +51,7 @@ public class ImportConfigTest
     [Test]
     public void TestConfigLoad_Xml()
     {
-        var config = ImportConfig.Load("./testFile.xml");
+        var config = ImportConfig.Load( CONFIGFILENAME + ".xml");
         var baseline = new ImportConfig();
         Assert.That(config, Is.Not.Null);
         Assert.That(config.Name, Is.EqualTo(baseline.Name));
@@ -67,7 +66,7 @@ public class ImportConfigTest
     [Test]
     public void TestConfigLoad_Yaml()
     {
-        var config = ImportConfig.Load("./testFile.yaml");
+        var config = ImportConfig.Load( CONFIGFILENAME + ".yaml");
         var baseline = new ImportConfig();
         Assert.That(config, Is.Not.Null);
         Assert.That(config.Name, Is.EqualTo(baseline.Name));
@@ -82,7 +81,7 @@ public class ImportConfigTest
     [Test]
     public void TestConfigLoad_Yml()
     {
-        var config = ImportConfig.Load("./testFile.yml");
+        var config = ImportConfig.Load( CONFIGFILENAME + ".yml");
         var baseline = new ImportConfig();
         Assert.That(config, Is.Not.Null);
         Assert.That(config.Name, Is.EqualTo(baseline.Name));

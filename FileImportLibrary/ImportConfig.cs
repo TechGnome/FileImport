@@ -11,6 +11,9 @@ namespace TechGnome.FileImport.FileImportLibrary;
 [XmlRoot("Config", Namespace="https://github.com/TechGnome/FileImport", IsNullable = false)]
 public class ImportConfig
 {
+
+    private FieldType _fieldType;
+
     [XmlAttribute]
     public string Name { get; set; } = "Default";
     
@@ -64,8 +67,23 @@ public class ImportConfig
         }
     }
 
+
     [XmlAttribute]
-    public FieldType FieldType { get; set; } = FieldType.Delimited;
+    public FieldType FieldType
+    {
+        get
+        {
+            return _fieldType;
+        }
+        set
+        {
+            _fieldType = value;
+            if (value == FieldType.FixedWidth) 
+            {
+                Delimiters = null;
+            }
+        }
+    }
 
     [XmlAttribute]
     public bool UseHeaderAsFields { get; set; } = true;
@@ -73,7 +91,7 @@ public class ImportConfig
     [XmlArray("Fields")]
     [XmlArrayItem("Name")]
     [JsonPropertyName("fields")]
-    public List<string>? Fields  { get; set; } = null;
+    public List<string>? Fields { get; set; } = null;
 
     public bool ShouldSerializeSkipRowsValue()
     {
@@ -83,11 +101,13 @@ public class ImportConfig
     private static Dictionary<string, ImportConfig> instance = new Dictionary<string, ImportConfig>();
 
     public static readonly ImportConfig DEFAULT = new();
-    public static readonly ImportConfig CSV = new() { Name = "CSV", QuotedData = true };
-    public static readonly ImportConfig TAB = new() { Name = "TAB", Delimiters = new List<string> { new("\t") } };
-    public static readonly ImportConfig PIPE = new() { Name = "PIPE", Delimiters = new List<string> { new("|") } };
-    public static readonly ImportConfig SEMICOLON = new() { Name = "SEMICOLON", Delimiters = new List<string> { new(";") } };
-    public static readonly ImportConfig USERDEFINED = new () { Name = "USER", Delimiters = new List<string> { new(";") } };
+    public static readonly ImportConfig CSV = new() { Name = "CSV"} ;
+    public static readonly ImportConfig CSV_EXTENDED = new() { Name = "CSV Extended", QuotedData = true };
+    public static readonly ImportConfig TAB = new() { Name = "Tab", Delimiters = new List<string> { new("\t") } };
+    public static readonly ImportConfig PIPE = new() { Name = "Pipe", Delimiters = new List<string> { new("|") } };
+    public static readonly ImportConfig SEMICOLON = new() { Name = "Semicolon", Delimiters = new List<string> { new(";") } };
+    public static readonly ImportConfig USERDEFINED = new() { Name = "User", Delimiters = new List<string> { new(";") } };
+    public static readonly ImportConfig FIXED_WIDTH = new() { Name = "Fixed Width", FieldType = FieldType.FixedWidth, TrimWhiteSpace = true };
 
     public ImportConfig()
     {
@@ -177,8 +197,11 @@ public class ImportConfig
 
     private static ImportConfig? LoadFromJson(string fileName)
     {
-            string jsonString = File.ReadAllText(fileName);
-            return JsonSerializer.Deserialize<ImportConfig?>(jsonString)!;
+        string jsonString = File.ReadAllText(fileName);
+        var options = new JsonSerializerOptions 
+            { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, 
+            WriteIndented = true };
+        return JsonSerializer.Deserialize<ImportConfig?>(jsonString, options)!;
     }
 
     private static void SaveAsXml(string fileName, ImportConfig config)
@@ -195,7 +218,8 @@ public class ImportConfig
         XmlSerializer serializer = new(typeof(ImportConfig));
         FileStream fs = new(fileName, FileMode.OpenOrCreate);
         TextReader reader = new StreamReader(fs);
-        return (ImportConfig?)serializer.Deserialize(reader);
+        ImportConfig? config = (ImportConfig?)serializer.Deserialize(reader);
+        return config;
     }
 
     private static void SaveAsYaml(string fileName, ImportConfig config)

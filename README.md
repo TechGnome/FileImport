@@ -8,6 +8,8 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
+[![.NET][gh-buid-shield]][gh-build-url]
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -267,8 +269,8 @@ _For more examples, please refer to the [FileimportLibraryTest](https://github.c
   - [x] ~~YAML format~~
 - [ ] Ability to reaad and use configuration files
   - [x] ~~JSON format~~
-  - [ ] XML format
-  - [ ] YAML format
+  - [x] ~~XML format~~
+  - [x] ~~YAML format~~
 - [x] ~~Ability to skip rows at the beginning of a file~~
 - [ ] Support comments in the imported file
 - [ ] Support multiple format layouts in a single file
@@ -350,6 +352,9 @@ Project Link: [https://github.com/techgnome/FileImport](https://github.com/techg
 [issues-url]: https://github.com/techgnome/FileImport/issues
 [license-shield]: https://img.shields.io/github/license/techgnome/FileImport.svg?style=for-the-badge
 [license-url]: https://github.com/techgnome/FileImport/blob/master/LICENSE.txt
+
+[gh-buid-shield]: https://github.com/TechGnome/FileImport/actions/workflows/dotnet.yml/badge.svg?branch=main
+[gh-build-url]: https://github.com/TechGnome/FileImport/actions/workflows/dotnet.yml
 
 [CSharpNet60]: https://img.shields.io/badge/C%23-.Net_6.0-blue?logo=csharp
 [CSharpNet70]: https://img.shields.io/badge/C%23-.Net_7.0-blue?logo=csharp

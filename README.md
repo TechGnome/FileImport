@@ -75,7 +75,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About FileImport
 
-FileImport is designed to be a simple and easy way to import text files. The intent it to deal with the boilerplate, mundane code of creating a file reader and pulling in the data, and letting you get back to doing what you do best - writing code.
+FileImport is designed to be a simple and easy way to import text files. Built as a wrapper around the TextFieldParser, it is intended to deal with the boilerplate, mundane code of creating a file reader and pulling in the data. With a single line of code, it is possible to fill a datatable with simple data from a CSV file. Nedd to import a TAB delimited file? Add a simple parameter andd you're done. Got a fixed width file? Another quick change, and you're back to doing what you do best - writing code.
 
 The design behind the FileImport library is intended to be sa simple or as complex as you want it to be. It can, by default, read in aa simple basic CSV file just by using one line using the built-in default settings.
 
@@ -250,13 +250,13 @@ _For more examples, please refer to the [FileimportLibraryTest](https://github.c
   - [x] ~~Data is unquoted~~
 - [x] ~~Additional CSV support~~
   - [x] ~~Enable quoted data~~
-- [ ] Ability to "peek" at a file and see what columns are present
+- [x] ~~Ability to "peek" at a file and see what columns are present~~
   - [x] ~~CSV files~~
   - [x] ~~Tab~~
   - [x] ~~Pipe~~
   - [x] ~~Semicolon~~
   - [x] ~~User-defined~~
-  - [ ] Fixed-width
+  - [x] ~~Fixed-width~~
 - [x] ~~Additional delimiter support (in progresss)~~
   - [x] ~~Tab~~
   - [x] ~~Pipe~~
@@ -335,6 +335,7 @@ Project Link: [https://github.com/techgnome/FileImport](https://github.com/techg
 * [.NET]([CSharpNet60-url])
 * [NUget]({NUget-url})
 * [Unit]([Unit0url])
+* [YamlDotNet]([YamlDotNet-url])
 * [Choose an Open Source License](https://choosealicense.com)
 * [Img Shields](https://shields.io)
 * [GitHub Pages](https://pages.github.com)

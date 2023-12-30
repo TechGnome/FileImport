@@ -4,6 +4,14 @@
     <RootNamespace>TechGnome.FileImport.FileImportLibrary</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <PackageId>TechGnome.FileImport</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Chris Anderson</Authors>
+    <Company>TechGnome</Company>
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="YamlDotNet" Version="13.3.1" />

@@ -39,27 +39,27 @@ public class FixedWidthTest
         Assert.That(result.Columns[9].ColumnName, Is.EqualTo("Field 10"));
 
         // Sample some of the data
-        Assert.That(result.Rows[0]["Field 1"],  Is.EqualTo("Text 11"));
-        Assert.That(result.Rows[1]["Field 2"],  Is.EqualTo("246"));
-        Assert.That(result.Rows[2]["Field 3"],  Is.EqualTo("2023-08-03"));
-        Assert.That(result.Rows[3]["Field 4"],  Is.EqualTo("Text 42"));
-        Assert.That(result.Rows[4]["Field 5"],  Is.EqualTo("2280"));
-        Assert.That(result.Rows[5]["Field 6"],  Is.EqualTo("2023-09-06"));
-        Assert.That(result.Rows[6]["Field 7"],  Is.EqualTo("Text 73"));
-        Assert.That(result.Rows[7]["Field 8"],  Is.EqualTo("256"));
-        Assert.That(result.Rows[8]["Field 9"],  Is.EqualTo("2023-10-09"));
+        Assert.That(result.Rows[0]["Field 1"], Is.EqualTo("Text 11"));
+        Assert.That(result.Rows[1]["Field 2"], Is.EqualTo("246"));
+        Assert.That(result.Rows[2]["Field 3"], Is.EqualTo("2023-08-03"));
+        Assert.That(result.Rows[3]["Field 4"], Is.EqualTo("Text 42"));
+        Assert.That(result.Rows[4]["Field 5"], Is.EqualTo("2280"));
+        Assert.That(result.Rows[5]["Field 6"], Is.EqualTo("2023-09-06"));
+        Assert.That(result.Rows[6]["Field 7"], Is.EqualTo("Text 73"));
+        Assert.That(result.Rows[7]["Field 8"], Is.EqualTo("256"));
+        Assert.That(result.Rows[8]["Field 9"], Is.EqualTo("2023-10-09"));
         Assert.That(result.Rows[9]["Field 10"], Is.EqualTo("Text 104"));
 
         // Sample the last row
-        Assert.That(result.Rows[15]["Field 1"],  Is.EqualTo("Text 161"));
-        Assert.That(result.Rows[15]["Field 2"],  Is.EqualTo("1968"));
-        Assert.That(result.Rows[15]["Field 3"],  Is.EqualTo("2023-08-16"));
-        Assert.That(result.Rows[15]["Field 4"],  Is.EqualTo("Text 162"));
-        Assert.That(result.Rows[15]["Field 5"],  Is.EqualTo("7296"));
-        Assert.That(result.Rows[15]["Field 6"],  Is.EqualTo("2023-09-16"));
-        Assert.That(result.Rows[15]["Field 7"],  Is.EqualTo("Text 163"));
-        Assert.That(result.Rows[15]["Field 8"],  Is.EqualTo("65536"));
-        Assert.That(result.Rows[15]["Field 9"],  Is.EqualTo("2023-10-16"));
+        Assert.That(result.Rows[15]["Field 1"], Is.EqualTo("Text 161"));
+        Assert.That(result.Rows[15]["Field 2"], Is.EqualTo("1968"));
+        Assert.That(result.Rows[15]["Field 3"], Is.EqualTo("2023-08-16"));
+        Assert.That(result.Rows[15]["Field 4"], Is.EqualTo("Text 162"));
+        Assert.That(result.Rows[15]["Field 5"], Is.EqualTo("7296"));
+        Assert.That(result.Rows[15]["Field 6"], Is.EqualTo("2023-09-16"));
+        Assert.That(result.Rows[15]["Field 7"], Is.EqualTo("Text 163"));
+        Assert.That(result.Rows[15]["Field 8"], Is.EqualTo("65536"));
+        Assert.That(result.Rows[15]["Field 9"], Is.EqualTo("2023-10-16"));
         Assert.That(result.Rows[15]["Field 10"], Is.EqualTo("Text 164"));
     }
 
@@ -106,7 +106,7 @@ public class FixedWidthTest
     [Test]
     public void TestConfigLoad_FixedWidth_Json()
     {
-        var config = ImportConfig.Load( CONFIGFILENAME + ".json");
+        var config = ImportConfig.Load(CONFIGFILENAME + ".json");
         Assert.That(config, Is.Not.Null);
         Assert.That(config.Name, Is.EqualTo(fixedWidthConfig.Name));
         Assert.That(config.Delimiters, Is.Null);
@@ -121,7 +121,7 @@ public class FixedWidthTest
     [Test]
     public void TestConfigLoad_FixedWidth_Xml()
     {
-        var config = ImportConfig.Load( CONFIGFILENAME + ".xml");
+        var config = ImportConfig.Load(CONFIGFILENAME + ".xml");
         Assert.That(config, Is.Not.Null);
         Assert.That(config.Name, Is.EqualTo(fixedWidthConfig.Name));
         Assert.That(config.Delimiters, Is.Null);
@@ -136,7 +136,7 @@ public class FixedWidthTest
     [Test]
     public void TestConfigLoad_FixedWidth_Yaml()
     {
-        var config = ImportConfig.Load( CONFIGFILENAME + ".yaml");
+        var config = ImportConfig.Load(CONFIGFILENAME + ".yaml");
         Assert.That(config, Is.Not.Null);
         Assert.That(config.Name, Is.EqualTo(fixedWidthConfig.Name));
         Assert.That(config.Delimiters, Is.Null);

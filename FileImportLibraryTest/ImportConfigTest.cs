@@ -36,7 +36,7 @@ public class ImportConfigTest
     [Test]
     public void TestConfigLoad_Json()
     {
-        var config = ImportConfig.Load( CONFIGFILENAME + ".json");
+        var config = ImportConfig.Load(CONFIGFILENAME + ".json");
         var baseline = new ImportConfig();
         Assert.That(config, Is.Not.Null);
         Assert.That(config.Name, Is.EqualTo(baseline.Name));
@@ -51,7 +51,7 @@ public class ImportConfigTest
     [Test]
     public void TestConfigLoad_Xml()
     {
-        var config = ImportConfig.Load( CONFIGFILENAME + ".xml");
+        var config = ImportConfig.Load(CONFIGFILENAME + ".xml");
         var baseline = new ImportConfig();
         Assert.That(config, Is.Not.Null);
         Assert.That(config.Name, Is.EqualTo(baseline.Name));
@@ -66,7 +66,7 @@ public class ImportConfigTest
     [Test]
     public void TestConfigLoad_Yaml()
     {
-        var config = ImportConfig.Load( CONFIGFILENAME + ".yaml");
+        var config = ImportConfig.Load(CONFIGFILENAME + ".yaml");
         var baseline = new ImportConfig();
         Assert.That(config, Is.Not.Null);
         Assert.That(config.Name, Is.EqualTo(baseline.Name));
@@ -81,7 +81,7 @@ public class ImportConfigTest
     [Test]
     public void TestConfigLoad_Yml()
     {
-        var config = ImportConfig.Load( CONFIGFILENAME + ".yml");
+        var config = ImportConfig.Load(CONFIGFILENAME + ".yml");
         var baseline = new ImportConfig();
         Assert.That(config, Is.Not.Null);
         Assert.That(config.Name, Is.EqualTo(baseline.Name));

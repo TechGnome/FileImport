@@ -8,7 +8,7 @@ using YamlDotNet.Serialization.NamingConventions;
 
 namespace TechGnome.FileImport.FileImportLibrary;
 
-[XmlRoot("Config", Namespace="https://github.com/TechGnome/FileImport", IsNullable = false)]
+[XmlRoot("Config", Namespace = "https://github.com/TechGnome/FileImport", IsNullable = false)]
 public class ImportConfig
 {
 
@@ -16,11 +16,11 @@ public class ImportConfig
 
     [XmlAttribute]
     public string Name { get; set; } = "Default";
-    
+
     [XmlArray("Delimiters")]
     [XmlArrayItem("Delimiter")]
     [JsonPropertyName("delimiters")]
-    public List<string>? Delimiters { get; set; } = new List<string>{ new(",") };
+    public List<string>? Delimiters { get; set; } = new List<string> { new(",") };
 
     [XmlArray("Comments")]
     [XmlArrayItem("Token")]
@@ -51,14 +51,16 @@ public class ImportConfig
     {
         get
         {
-            if (SkipRows != null && SkipRows > 0) 
+            if (SkipRows != null && SkipRows > 0)
             {
                 return SkipRows.Value.ToString();
-            } else {
+            }
+            else
+            {
                 return string.Empty;
             }
         }
-        set 
+        set
         {
             if (value != null)
             {
@@ -78,7 +80,7 @@ public class ImportConfig
         set
         {
             _fieldType = value;
-            if (value == FieldType.FixedWidth) 
+            if (value == FieldType.FixedWidth)
             {
                 Delimiters = null;
             }
@@ -101,7 +103,7 @@ public class ImportConfig
     private static Dictionary<string, ImportConfig> instance = new Dictionary<string, ImportConfig>();
 
     public static readonly ImportConfig DEFAULT = new();
-    public static readonly ImportConfig CSV = new() { Name = "CSV"} ;
+    public static readonly ImportConfig CSV = new() { Name = "CSV" };
     public static readonly ImportConfig CSV_EXTENDED = new() { Name = "CSV Extended", QuotedData = true };
     public static readonly ImportConfig TAB = new() { Name = "Tab", Delimiters = new List<string> { new("\t") } };
     public static readonly ImportConfig PIPE = new() { Name = "Pipe", Delimiters = new List<string> { new("|") } };
@@ -112,7 +114,7 @@ public class ImportConfig
     public ImportConfig()
     {
         Name = "Default";
-        Delimiters = new List<string> {new(",")};
+        Delimiters = new List<string> { new(",") };
         CommentTokens = null;
         HasHeader = true;
         QuotedData = false;
@@ -149,7 +151,9 @@ public class ImportConfig
         if (instance.TryGetValue(value, out ImportConfig? result))
         {
             return result;
-        } else {
+        }
+        else
+        {
             throw new InvalidCastException();
         }
     }
@@ -171,7 +175,7 @@ public class ImportConfig
                 break;
         }
     }
-    
+
     public static ImportConfig? Load(string fileName)
     {
         switch (fileName.Last(4).ToLower())
@@ -186,21 +190,25 @@ public class ImportConfig
                 return LoadFromJson(fileName);
         }
     }
-    
+
     private static void SaveAsJson(string fileName, ImportConfig config)
     {
-        var options = new JsonSerializerOptions 
-            { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, 
-            WriteIndented = true };
+        var options = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            WriteIndented = true
+        };
         File.WriteAllText(fileName, JsonSerializer.Serialize(config, options));
     }
 
     private static ImportConfig? LoadFromJson(string fileName)
     {
         string jsonString = File.ReadAllText(fileName);
-        var options = new JsonSerializerOptions 
-            { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, 
-            WriteIndented = true };
+        var options = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            WriteIndented = true
+        };
         return JsonSerializer.Deserialize<ImportConfig?>(jsonString, options)!;
     }
 
@@ -233,11 +241,11 @@ public class ImportConfig
     }
     private static ImportConfig? LoadFromYaml(string fileName)
     {
-            string yamlString = File.ReadAllText(fileName);
-            var deserializer = new DeserializerBuilder()
-                .WithNamingConvention(CamelCaseNamingConvention.Instance)
-                .Build();
-			return deserializer.Deserialize<ImportConfig>(yamlString);
+        string yamlString = File.ReadAllText(fileName);
+        var deserializer = new DeserializerBuilder()
+            .WithNamingConvention(CamelCaseNamingConvention.Instance)
+            .Build();
+        return deserializer.Deserialize<ImportConfig>(yamlString);
     }
 
 }

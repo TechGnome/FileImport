@@ -8,10 +8,10 @@ public class FileImporter
     {
         List<DataColumn> dataColumns = new List<DataColumn>();
 
-        foreach(string field in fields)
+        foreach (string field in fields)
         {
             Type? colType = Type.GetType("System.String", false, true);
-            if (colType == null )
+            if (colType == null)
             {
                 throw new InvalidDataException("Unable to crete the correct type secified.");
             }
@@ -23,14 +23,17 @@ public class FileImporter
     private static List<DataColumn> CreateDataColumns(TextFieldParser reader, ImportConfig config)
     {
         List<DataColumn> dataColumns;
-        if(config.UseHeaderAsFields || config.Fields == null || config.Fields.Count == 0)
+        if (config.UseHeaderAsFields || config.Fields == null || config.Fields.Count == 0)
         {
             string[]? fields = reader.ReadFields();
-            if (fields == null) {
-                    throw new InvalidDataException("Unable to determine the field columns of the file.");
+            if (fields == null)
+            {
+                throw new InvalidDataException("Unable to determine the field columns of the file.");
             }
             dataColumns = BuildDataColumns(fields);
-        } else {
+        }
+        else
+        {
             dataColumns = BuildDataColumns(config.Fields.ToArray());
         }
 
@@ -45,12 +48,12 @@ public class FileImporter
         return dataTable;
     }
 
-    private static TextFieldParser CreateParser(string source, ImportConfig config) 
+    private static TextFieldParser CreateParser(string source, ImportConfig config)
     {
         return new TextFieldParser(source)
         {
             TextFieldType = config.FieldType,
-            Delimiters = config.Delimiters!= null ? config.Delimiters.ToArray() : Array.Empty<string>(),
+            Delimiters = config.Delimiters != null ? config.Delimiters.ToArray() : Array.Empty<string>(),
             HasFieldsEnclosedInQuotes = config.QuotedData,
             FieldWidths = config.FieldWidths != null ? config.FieldWidths : Array.Empty<int>(),
             CommentTokens = config.CommentTokens != null ? config.CommentTokens.ToArray() : Array.Empty<string>(),
@@ -65,7 +68,7 @@ public class FileImporter
 
     public static List<DataColumn> Peek(string source, ImportConfig config)
     {
-        var reader = CreateParser(source, config); 
+        var reader = CreateParser(source, config);
         return CreateDataColumns(reader, config);
     }
 
@@ -77,7 +80,7 @@ public class FileImporter
     public static DataTable Import(string source, ImportConfig config)
     {
         var reader = CreateParser(source, config);
-        if(reader == null)
+        if (reader == null)
         {
             throw new Exception("Unable to parse the file.");
         }
@@ -86,10 +89,10 @@ public class FileImporter
         {
             reader.ReadLine();
         }
-        while(!reader.EndOfData)
+        while (!reader.EndOfData)
         {
             string[]? currentRow = reader.ReadFields();
-            if (currentRow == null) 
+            if (currentRow == null)
             {
                 throw new InvalidDataException("Unable to properly parse the data row");
             }

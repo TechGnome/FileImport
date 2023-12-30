@@ -2,7 +2,7 @@ namespace TechGnome.FileImport.FileImportLibrary.Extensions;
 
 public static class StringExtentions
 {
-    public static string InitCapital(this string source) 
+    public static string InitCapital(this string source)
     {
         if (string.IsNullOrEmpty(source))
         {
